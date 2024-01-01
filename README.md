@@ -11,5 +11,5 @@ mkdir = folder
 
 touch = file
 
-# "vi" visual editor(idk)
+## "vi" visual editor(idk)
 
