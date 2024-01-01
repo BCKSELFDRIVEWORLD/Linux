@@ -12,6 +12,7 @@ mkdir = folder
 touch = file
 
 "vi" visual editor(idk)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Basically, vi has 2 different modes: Command and Insert modes:
 Command Mode: This mode allows you to use commands in order to interact with the file. For instance, go to a certain line of the file, delete certain lines, etc...
