@@ -145,4 +145,80 @@ Let's focus for a moment on the ROS_PACKAGE_PATH environment variable. This vari
 
 export ROS_PACKAGE_PATH="/home/simulations/public_sim_ws/src:/opt/ros/kinetic/share"
 
+# Visualize processes
+
+htop:
+-
+The htop command is an improved version of top (which is the classical command to visualize processes). 
+
+Usually, it’s not installed by default on most Linux distributions.
+
+We can see several pieces of useful data here.
+
+The whole window above can be split up into three sections for the ease of our understanding. 
+
+The top-left section comprises the CPU and memory usage information. 
+
+The top-right section provides info about load average and uptime. 
+
+The rest of the information contains real-time data of processes with stats like priority, CPU and memory consumption, etc.
+
+ps faux
+-
+At first glance, there are also many processes here.
+
+But remember, we have the grep tool for that! However, all the processes you are seeing now (like the ones related to Gazebo) have been automatically launched by the Academy and you won't be able to interact much with them.
+
+# Kill processes
+
+ Ctrl + C
+ -
+ Ctrl + C is used to kill a process with the signal SIGINT, and can be intercepted by a program (in our case, it's test_process.py) so that it can clean itself up before exiting (in our case, stop the robot), or not exit at all. It depends on how the application is built.
+
+ So, on the Shell where you have the Hello there! stream, click Ctrl + C on your keyboard. You will get something similar to the image below, and you will be able to type again on the Shell.
+
+
+Ctrl + Z
+-
+
+Ctrl + Z is used for suspending a process by sending it the signal SIGSTOP, which cannot be intercepted by the program. 
+
+Basically, it sends SIGTSTOP to a foreground application, effectively putting it in the background, suspended. But then... does this means that the process will still be there? We'll check it in a moment!
+
+Command "kill"
+-
+
+In the previous section, we sent a foreground process to the background, using the command Ctrl+Z. 
+
+But this opened up a new question: how can I stop a process that is running in the background? 
+
+Well, for this case, Linux provides the kill command. It's very easy to use, but you need to know the Process ID (PID) of the process you want to terminate.
+
+The PID of the process is the number that appears in the second column. In the case of our process, it is 26244, but in your case, it will probably be different. So now, in order to kill, you just have to execute the following command:
+
+kill 26244
+
+Well, the problem here is that when you use Ctrl + Z, besides sending the process to the background, you are also suspending it (sending a SIGSTOP signal). So, any signal we send now to the process (for instance, to kill it) will be ignored by the process. So... what can we do?
+
+SSH protocol
+-
+ssh <user>@<host>
+
+ssh student@127.0.0.1
+
+ps faux | grep ssh
+-
+![image](https://github.com/BCKSELFDRIVEWORLD/Linux/assets/146545020/dbf01d4e-dc0e-4650-81b9-d2d404118b42)
+
+
+
+# Commands "apt", "sudo"
+
+Linux uses a dpkg packaging system. A packaging system is a way to provide programs and applications for installation. This way, you don’t have to build a program from the source code.
+
+APT (Advanced Package Tool) is the command line tool to interact with this packaging system.You can use it to find and install new packages, upgrade packages, clean packages, etc.
+
+apt-get basically works on a database of available packages. If you don’t update this database, the system won’t know if there are newer packages available or not. In fact, this is the first command you need to run in any Linux system after a fresh install. So... let's update our database!
+
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
