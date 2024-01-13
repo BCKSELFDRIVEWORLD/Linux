@@ -2,7 +2,6 @@
 
 pwd = you can check the current path
 
-ls -la = this shows all files includes hidden files (begin ".")
 
 ls --help = its helps :)
 
@@ -10,6 +9,33 @@ mkdir = folder
 
 
 touch = file
+#  Command "mv"
+
+The command mv in Linux stands for move, so it's quite self-explanatory. It allows you to move files or folders from one location to another. For instance, let's try the following commands. First off, let's make sure we are on the directory of the file/folder we want to move.
+
+ mv <file/folder we want to move> <destination>
+
+# Command "cp"
+
+In Linux systems, the command cp stands for copy. So basically, it allows you to copy a file or a folder (or multiples) from one location to another one.
+
+cp <file/folder we want to copy> <name of the new file/folder>
+
+in order to copy a folder, you will need to use the -r argument.
+
+cp -r my_scripts/ my_scripts_copy/
+
+# Command "rm"
+
+So, maybe it's time to clean up all the mess we have created, don't you think? In Linux, the rm command stands for remove. So, let's try to remove some of the files and folders that we have created lately with the following commands.
+
+rm <file to remove>
+
+Now, for removing folders, it works exactly the same as with the cp command: you need to add a -r flag to the command. Let's try to remove the copy folder we created before.
+
+rm -r my_scripts_copy
+
+
 
 "vi" visual editor(idk)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -21,7 +47,76 @@ By default, vi opens with the command mode activated. In order to switch to the 
 Use the :w sequence first, in order to write the latest changes. After this, you will be able to exit the editor using the sequence :q.
 Use the sequence :q!. This will exit the editor, ignoring the last changes to the file.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Permissions 
+
+-la flag ???
+
+Basically, the -la flag allows us to see some basic data related to the files or folders, like the permissions of the files/folders, their creation date/time, etc.
+
+-rw-r--r-- 1 user user 2203 Jul 23 23:26 move_bb8_square.py
+
+For now, let's just focus on the first part, which is rw-r--r--. These are the PERMISSIONS of the file.
+
+Each file or directory has 3 permissions types:
+
+read: The Read permission refers to a user's ability to read the contents of the file. It is stated with the character r.
+
+write: The Write permission refers to a user's ability to write or modify a file or directory. It is stated with the character w.
+
+execute: The Execute permission affects a user's ability to execute a file or view the contents of a directory. It is stated with the character x.
+
+On the other hand, each file or directory has three user-based permission groups:
+
+owner: The Owner permissions apply only to the owner of the file or directory, and will not impact the actions of other users. They are represented in the first 3 characters.
+
+group: The Group permissions apply only to the group that has been assigned to the file or directory, and will not affect the actions of other users. They are represented in the middle 3 characters.
+
+all users: The All Users permissions apply to all other users on the system, and this is the permission group that you want to watch the most. They are represented in the last 3 characters.
+
+We already know the 2 last parameters. As for the groups, you can specify them using the following flags:
+
+u: Owner
+g: Group
+o: Others
+a: All users. For all users, you can also leave it blank, as we did in the example command you executed before.
+
+So, applying all this to our file, we can say that the owner of the file (in this case, it's us) has read (r) and write (w) permissions, and the group and the rest of users have only read (r) permissions.
+
+So, as you may have already deduced, the only permissions that apply are the ones that are explicitly specified with their character. If they appear with a - symbol, it means that the permissions are not applied.
+
+From this, we can see that this file has no execution permissions. And this, if we want to actually execute the file, could be quite a problem, don't you think? Then... how can we change this?
+
+# Bash scripts
+
+Linux has its own scripts. They are commonly know as bash scripts.
+
+Basically, a bash script is a regular text file that contains a series of commands. 
+
+These commands are a mixture of commands you would normally type yourself on the command line (such as the ones we have been reviewing, cd, ls, or cp) and also commands we could type on the command line, but generally wouldn't (you'll discover these over the next few pages). 
+
+An important point to remember though is:
+
+Anything you can run normally on the command line can be put into a script and it will do exactly the same thing. Similarly, anything you can put into a script can also be run normally on the command line and it will do exactly the same thing.
+
+touch bash_script.sh
+
+#!/bin/bash
+
+echo Hello there, Developers!
+
+First, as you can see, the file extension is .sh
+
+Usually, this is the extension you will always use when you create a new bash script. 
+
+Second, note that the script starts with the line #!/bin/bash.
+
+All bash scripts will start with this special line. 
+
+
+
+
+
+
 # Environment Variables
 
 Ortam değişkeni, çalışan işlemlerin bilgisayarda nasıl davranacağını etkileyebilecek, dinamik olarak adlandırılmış bir değerdir
